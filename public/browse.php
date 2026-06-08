@@ -75,7 +75,6 @@ if (isset($_POST['new_game_solo'])) {
     exit;
 }
 
-echo "<script>userLoggedIn = '" . htmlspecialchars($userLoggedIn, ENT_QUOTES, 'UTF-8') . "';</script>";
 ?>
 <!DOCTYPE html>
 <html>

@@ -6,6 +6,7 @@
 body {
 	font-family: "Disney";
 	background-color: rgb(32,32,32);
+	color: #fff;
 }
 
 h2 {
@@ -19,7 +20,7 @@ h2 {
 	height: 500px;
 	width: 450px;
 	border: 3px solid;
-	color: black;
+	color: #fff;
 	text-align: center;
 	background-image: url("../images/img1.jpg");
 	background-size: 100%;
@@ -37,7 +38,7 @@ h2 {
 
 #ident a {
 	text-decoration: none;
-	color: black;
+	color: #fff;
 }
 
 #HeadBan {
@@ -96,7 +97,7 @@ h2 {
 .mainContent li a {
     text-decoration: none;
     cursor: pointer;
-    color: grey;
+    color: #fff;
 }
 
 .mainContent li a:hover {
@@ -120,6 +121,7 @@ h2 {
 	margin: 60px;
 	text-align: center;
     justify-content: center;
+    color: #fff;
 }
 
 .mainContent .label {
