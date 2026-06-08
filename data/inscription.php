@@ -40,16 +40,7 @@ if(isset($_POST['register_button'])) {
 	$wasSuccessful = $account->register($username, $firstName, $lastName, $email, $email2, $password, $password2);
 
 	if($wasSuccessful == true) {
-		$id_stmt = mysqli_prepare($connexion, "SELECT id FROM users WHERE username = ?");
-		mysqli_stmt_bind_param($id_stmt, "s", $username);
-		mysqli_stmt_execute($id_stmt);
-		$id_row = mysqli_fetch_assoc(mysqli_stmt_get_result($id_stmt));
-
-		session_regenerate_id(true);
-
-		$_SESSION['user_id']      = $id_row ? (int) $id_row['id'] : null;
-		$_SESSION['userLoggedIn'] = $username;
-		header("Location: browse");
+		header("Location: register");
 		exit;
 	}
 
