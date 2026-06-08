@@ -1,0 +1,1 @@
+console.log("D'accord je vais vous dire le Mot de passe... Ou peut-être pas. Mais sachez que le TEMPS est important.")

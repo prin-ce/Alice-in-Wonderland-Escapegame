@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# PHP
+*.log
+/vendor/
+
+# Variables d'environnement
+.env
+.env.local
+
+# Uploads utilisateurs (si ajouté plus tard)
+public/images/avatars/uploads/

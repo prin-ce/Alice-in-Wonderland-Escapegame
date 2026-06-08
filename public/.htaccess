@@ -1,0 +1,27 @@
+# Désactiver le listage des répertoires
+Options -Indexes
+
+# Masquer les extensions .php et .html
+RewriteEngine On
+
+# 1. Rediriger le navigateur vers l'URL sans extension (301)
+RewriteCond %{THE_REQUEST} \.php[\s?] [NC]
+RewriteRule ^(.+?)\.php$ /$1 [R=301,L,NE,QSA]
+RewriteCond %{THE_REQUEST} \.html[\s?] [NC]
+RewriteRule ^(.+?)\.html$ /$1 [R=301,L,NE,QSA]
+
+# 2. Servir le bon fichier pour les URLs sans extension
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.+)$ $1.php [L,QSA]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+)$ $1.html [L,QSA]
+
+# Bloquer l'accès aux fichiers sensibles
+<FilesMatch "\.(sql|md)$">
+    Require all denied
+</FilesMatch>
+

@@ -1,0 +1,33 @@
+@font-face {
+	font-family: 'Bellota-LightItalic';
+	src: url('../font/Bellota-LightItalic.otf');
+}
+
+body {
+	font-family: "Bellota-LightItalic";
+	background-color: rgb(32,32,32);
+    color: #f8f8f2;
+    font-size: 1.4em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+#autotext {
+    border-right: 0.15em solid #f8f8f2;
+    letter-spacing: 0.05em;
+    animation: clignotement 0.75s step-end infinite;
+}
+
+@keyframes clignotement {
+    from,
+    to {
+        border-color: transparent;
+    }
+    
+    50% {
+        border-color: #f8f8f2;
+    }
+}

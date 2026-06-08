@@ -1,0 +1,118 @@
+@font-face {
+	font-family: "Disney";
+	src: url("../font/waltographUI.ttf");
+}
+
+@font-face {
+	font-family: 'Bellota-LightItalic';
+	src: url('../font/Bellota-LightItalic.otf');
+}
+
+@font-face {
+	font-family: 'Bellota-BoldItalic';
+	src: url('../font/Bellota-BoldItalic.otf');
+}
+
+body {
+	font-family: "Disney";
+	background-color: lightgrey;
+}
+
+p {
+	color : rgba(14, 8, 1, 1);
+}
+
+form {
+	color : black;
+	font-family: 'Bellota-LightItalic';
+	font-size: 1.1em;
+}
+
+#text {
+	border-radius: 2.5px;
+	border: 2px solid black;
+	background-color: rgba(121, 121, 85, 0.2);
+	width: 250px;
+	margin: auto;
+	padding-top: 10px;
+	filter: drop-shadow(0 0 2px white);
+}
+
+#main {
+	text-align: center;
+	margin: auto;
+	width: 420px;
+	height: 420px;
+	border: 2px solid black;
+	background-image: url("../images/TaillePied.png") ;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-color: white;
+	border-radius: 5px;
+}
+
+#rep {
+	text-align: center;
+	padding-top: 10px;
+	height: 20px;
+	width: 250px;
+	margin : auto;
+}
+
+#quasi {
+	color: darkorange;
+}
+
+#correct {
+	color: darkgreen;
+}
+
+#HeadBan {
+	font-size: 1.1em;
+	background-image: url("../images/background.jpg");
+	position: relative;
+	height: 50px;
+	width: all;
+	border: 1px solid;
+	border-radius: 10px;
+}
+
+#NomJeu {
+	text-align: center;
+	float: left;
+	margin-left: 20px;
+}
+
+#Player {
+	float: right;
+}
+
+
+#ppPlayer {
+	height: 40px;
+	width: auto;
+	margin-top: 5px;
+}
+
+#playerName {
+	float: right;
+	margin-right: 10px;
+	margin-top: 15px;
+}
+
+input[type="submit"] {
+	background-color: rgba(190,165,145,0.5);
+	border: 1px solid rgba(190,165,145,0.5);
+	border-radius: 3px;
+	margin: 5px 0 10px 0;
+	padding: 5px 10px 5px 10px;
+	color: #fff;
+	text-shadow: rgba(190,165,145,0.5) 0.5px 0.5px 0px;
+	font-family: 'Bellota-LightItalic', sans-serif;
+	font-size: 85%;
+}
+
+input[type="submit"]:hover {
+	border: 1px solid #dededd bold;
+	font-family: 'Bellota-BoldItalic', sans-serif;
+}

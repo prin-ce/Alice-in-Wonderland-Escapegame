@@ -1,0 +1,22 @@
+<html>
+    
+    <head>
+        <title>Le pays des Merveilles</title>        
+    </head>
+
+    <body>
+
+        <video id="intro" src="video/intro.mp4" type="video/mp4" width="100%" autoplay> </video>
+        
+    </body>
+
+    <!-- Script JS pour lancer la page d'inscription à la fin de la vidéo -->
+    <script>
+        var video = document.getElementsByTagName('video')[0];
+    
+        video.onended = function(e) {
+          location.replace("register")
+        };
+    </script>
+
+</html>

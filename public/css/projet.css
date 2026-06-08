@@ -1,0 +1,111 @@
+
+@font-face {
+	font-family: "Disney";
+	src: url("../font/waltographUI.ttf");
+}
+
+@font-face {
+	font-family: 'Bellota-LightItalic';
+	src: url('../font/Bellota-LightItalic.otf');
+}
+
+@font-face {
+	font-family: 'Bellota-BoldItalic';
+	src: url('../font/Bellota-BoldItalic.otf');
+}
+
+body {
+  font-family: 'Josefin Sans', sans-serif;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  color: #dfe4ea;
+  background-color: lightgrey;
+}
+
+.container{
+  width: 650px;
+  height: 550px;
+  border: 2px solid black;
+  border-radius: 5px;
+  background: url(../images/2052.jpg);
+  background-size: cover;
+}
+
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 2.5rem;
+}
+
+h2 {
+  text-align: center;
+}
+
+span, i {
+  color: rgba(214, 17, 17, 1);
+}
+
+h3 {
+  color: rgba(214, 17, 17, 1);
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 3rem auto 3rem;
+  width: 500px;
+}
+
+button {
+  background-color: rgba(190,165,145,0.5);
+	border: 1px solid rgba(190,165,145,0.5);
+	border-radius: 3px;
+	margin: 5px 0 10px 0;
+  font-family: 'Bellota-LightItalic', sans-serif;
+  flex: 1 0 45%;
+  width: 80px;
+  height: 60px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  margin: .4rem;
+  outline: none;
+  background: #dfe4ea;
+}
+
+button:hover {
+  border: 1px solid #dededd bold;
+	font-family: 'Bellota-BoldItalic', sans-serif;
+  transition: .5s;
+}
+
+button:active {
+  transform: scale(.5);
+  transition: transform .1s;
+}
+
+p {
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+#progress {
+  font-size: 1.3rem;
+  color: rgba(214, 17, 17, 1);
+  text-align: center;
+  filter: drop-shadow(0 0 5px white);
+}
+
+#timeElm {
+  text-align: center;
+  font-size: 1.3rem;
+  color: rgba(214, 17, 17, 1);
+}
+
+#fin {
+  text-align: center;
+}
