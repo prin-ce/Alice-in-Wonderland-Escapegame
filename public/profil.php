@@ -56,6 +56,7 @@ require_once(__DIR__ . "/../data/updateDetails.php");
                 <?php
                 $user = new User($connexion, $userLoggedIn);
 
+                $username  = isset($_POST["username"])  ? $_POST["username"]  : $user->getUsername();
                 $firstName = isset($_POST["firstName"]) ? $_POST["firstName"] : $user->getFirstName();
                 $lastName  = isset($_POST["lastName"])  ? $_POST["lastName"]  : $user->getLastName();
                 $email     = isset($_POST["email"])     ? $_POST["email"]     : $user->getEmail();
@@ -64,9 +65,12 @@ require_once(__DIR__ . "/../data/updateDetails.php");
                 <!-- Token CSRF -->
                 <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token'], ENT_QUOTES, 'UTF-8'); ?>">
 
-                <input type="text" name="firstName" value="<?php echo htmlspecialchars($firstName, ENT_QUOTES, 'UTF-8'); ?>">
-                <input type="text" name="lastName"  value="<?php echo htmlspecialchars($lastName, ENT_QUOTES, 'UTF-8'); ?>">
-                <input type="email" name="email"    value="<?php echo htmlspecialchars($email, ENT_QUOTES, 'UTF-8'); ?>">
+                <div class="fields-row">
+                    <input type="text"  name="username"  placeholder="Pseudo"  value="<?php echo htmlspecialchars($username,  ENT_QUOTES, 'UTF-8'); ?>">
+                    <input type="text"  name="firstName" placeholder="Prénom"  value="<?php echo htmlspecialchars($firstName, ENT_QUOTES, 'UTF-8'); ?>">
+                    <input type="text"  name="lastName"  placeholder="Nom"     value="<?php echo htmlspecialchars($lastName,  ENT_QUOTES, 'UTF-8'); ?>">
+                    <input type="email" name="email"     placeholder="Email"   value="<?php echo htmlspecialchars($email,     ENT_QUOTES, 'UTF-8'); ?>">
+                </div>
 
                 <div class="message">
                     <?php echo $detailsMessage; ?>
