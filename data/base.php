@@ -4,7 +4,7 @@
 
 	$timezone = date_default_timezone_set("Europe/London");
 
-	$connexion = mysqli_connect("localhost", "root", "", "escapegame");
+	$connexion = mysqli_connect("localhost", "root", "", "AliceInWonderland");
 
 	if(mysqli_connect_errno()) {
 		echo "Failed to connect: " . mysqli_connect_errno();
