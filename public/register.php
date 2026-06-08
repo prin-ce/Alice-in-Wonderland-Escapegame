@@ -73,7 +73,7 @@
 			<br>
 			<div id="first">
 
-                <form id="loginForm" action="register.php" method="POST">
+                <form id="loginForm" action="register" method="POST">
                     <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token'], ENT_QUOTES, 'UTF-8') ?>">
                     <br>
                     <?php echo $account->getError(Erreurs::$loginFailed); ?>
@@ -96,7 +96,7 @@
 
 			<div id="second">
 
-            <form id="registerForm" action="register.php" method="POST">
+            <form id="registerForm" action="register" method="POST">
                     <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token'], ENT_QUOTES, 'UTF-8') ?>">
 					<br>
                     <?php echo $account->getError(Erreurs::$usernameCharacters); ?>
