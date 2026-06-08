@@ -18,28 +18,46 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && (isset($_POST['saveDetailsButton'])
 // 1. Mise à jour du profil
 // ---------------------------
 if (isset($_POST["saveDetailsButton"])) {
-    $firstName = $_POST["firstName"];
-    $lastName  = $_POST["lastName"];
-    $email     = $_POST["email"];
+    $newUsername = trim($_POST["username"] ?? '');
+    $firstName   = $_POST["firstName"] ?? '';
+    $lastName    = $_POST["lastName"]  ?? '';
+    $email       = $_POST["email"]     ?? '';
 
-    // Vérifier l'unicité de l'email (en excluant l'utilisateur courant)
-    $stmt = mysqli_prepare($connexion,
-        "SELECT username FROM users WHERE email = ? AND username != ?");
-    mysqli_stmt_bind_param($stmt, "ss", $email, $userLoggedIn);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
-
-    if (mysqli_fetch_assoc($result)) {
-        // Email déjà pris par un autre utilisateur
-        $detailsMessage = "<div class='alertError'>Cet email est déjà utilisé par un autre compte.</div>";
+    if (!preg_match('/^[A-Za-z0-9_-]{5,25}$/', $newUsername)) {
+        $detailsMessage = "<div class='alertError'>Le pseudo doit avoir entre 5 et 25 caractères (lettres, chiffres, - et _).</div>";
     } else {
-        // Mise à jour sécurisée
-        $detailsMessage = "<div class='alertSuccess'>Profil mis à jour avec succès.</div>";
-
+        // Vérifier l'unicité du pseudo (en excluant l'utilisateur courant)
         $stmt = mysqli_prepare($connexion,
-            "UPDATE users SET firstname = ?, lastname = ?, email = ? WHERE username = ?");
-        mysqli_stmt_bind_param($stmt, "ssss", $firstName, $lastName, $email, $userLoggedIn);
+            "SELECT id FROM users WHERE username = ? AND username != ?");
+        mysqli_stmt_bind_param($stmt, "ss", $newUsername, $userLoggedIn);
         mysqli_stmt_execute($stmt);
+        $usernameTaken = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
+
+        // Vérifier l'unicité de l'email (en excluant l'utilisateur courant)
+        $stmt2 = mysqli_prepare($connexion,
+            "SELECT id FROM users WHERE email = ? AND username != ?");
+        mysqli_stmt_bind_param($stmt2, "ss", $email, $userLoggedIn);
+        mysqli_stmt_execute($stmt2);
+        $emailTaken = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt2));
+
+        if ($usernameTaken) {
+            $detailsMessage = "<div class='alertError'>Ce pseudo est déjà pris.</div>";
+        } elseif ($emailTaken) {
+            $detailsMessage = "<div class='alertError'>Cet email est déjà utilisé par un autre compte.</div>";
+        } else {
+            $stmt3 = mysqli_prepare($connexion,
+                "UPDATE users SET username = ?, firstName = ?, lastName = ?, email = ? WHERE username = ?");
+            mysqli_stmt_bind_param($stmt3, "sssss", $newUsername, $firstName, $lastName, $email, $userLoggedIn);
+            mysqli_stmt_execute($stmt3);
+
+            // Mettre à jour la session si le pseudo a changé
+            if ($newUsername !== $userLoggedIn) {
+                $_SESSION['userLoggedIn'] = $newUsername;
+                $userLoggedIn = $newUsername;
+            }
+
+            $detailsMessage = "<div class='alertSuccess'>Profil mis à jour avec succès.</div>";
+        }
     }
 }
 
